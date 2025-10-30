@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+  Mount\CompanyInfoResolverBundle\Resolver\:
+      resource: '../../src/Resolver/*' 
+  
+  Mount\CompanyInfoResolverBundle\Factory\ResolverFactory:
+    bind: 
+      $openApiBaseUrl: '%mount_company_info_resolver.openapi.base_url%'
+    public: true
+    

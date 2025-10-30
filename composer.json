@@ -1,0 +1,19 @@
+{
+    "name": "mount/company-info-resolver-bundle",
+    "description": "Bundle which can retrieve billing data in a DTO about a company, using its CUI.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mount\\CompanyInfoResolverBundle\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "jms/serializer-bundle": "^4.0",
+        "symfony/dependency-injection": "^5.4",
+        "guzzlehttp/guzzle": "^7.9",
+        "symfony/http-kernel": "^5.4",
+        "symfony/config": "^5.4"
+    }
+}
