@@ -9,7 +9,6 @@ use JMS\Serializer\SerializerInterface;
 class ResolverFactory
 {
     private string $openApiBaseUrl;
-    private SerializerInterface $serializer;
 
     public function __construct($openApiBaseUrl, SerializerInterface $serializer)
     {
@@ -18,6 +17,6 @@ class ResolverFactory
     }
     public function getOpenApiResolver($apiKey) : ICompanyInfoResolver
     {
-        return new OpenApiResolver($this->openApiBaseUrl, $apiKey, $this->serializer);
+        return new OpenApiResolver($this->openApiBaseUrl, $apiKey);
     }
 }

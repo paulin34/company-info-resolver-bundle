@@ -1,7 +1,6 @@
 <?php
 
-namespace App\DependencyInjection\Framework;
-
+namespace Mount\CompanyInfoResolverBundle\DependencyInjection\Framework;
 
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\SerializationContext;

@@ -7,20 +7,21 @@ use Mount\CompanyInfoResolverBundle\DTO\OpenApiDTO;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Mount\CompanyInfoResolverBundle\Exceptions\OpenApiException;
+use Mount\CompanyInfoResolverBundle\DependencyInjection\Framework\SerializerDI;
 
 class OpenApiResolver implements ICompanyInfoResolver
 {
-    private SerializerInterface $serializer;
+    use SerializerDI;
+    
     private ?string $baseUrl;
     private ?string $apiKey;
 
     private ?Client $client = null;
 
-    public function __construct($baseUrl, $apiKey, $serializer)
+    public function __construct($baseUrl, $apiKey)
     {
         $this->baseUrl = $baseUrl;
         $this->apiKey = $apiKey;
-        $this->serializer = $serializer;
     }
 
      /**
@@ -40,7 +41,7 @@ class OpenApiResolver implements ICompanyInfoResolver
         }
 
         /** @var OpenApiDTO $data */
-        $data = $this->serializer->deserialize($response->getBody()->getContents(), OpenApiDTO::class , 'json');
+        $data = $this->deserializeFromString($response->getBody()->getContents(), OpenApiDTO::class);
 
         return $data;
     }
